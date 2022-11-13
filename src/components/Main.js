@@ -3,10 +3,11 @@ import { When } from 'react-if';
 import { Navigate } from 'react-router-dom';
 import { authContext } from '../contexts/AuthProvider';
 import cookies from 'react-cookies';
-import '../styles/Main.css'
 import AddPostForm from './AddPostForm';
 import PostHolder from './PostHolder';
 import { dataContext } from '../contexts/DataProvider';
+import { Text, VStack, Input, Box } from "@chakra-ui/react";
+
 
 function Main() {
   const { isAuth, setIsAuth } = useContext(authContext);
@@ -18,19 +19,31 @@ function Main() {
       setIsAuth(true);
       getPosts();
     }
-  }, [refreshMain]);  //reson of infinate loop
+  }, [refreshMain]);
 
   return (
     <>
-    {console.log('main')}
       <When condition={isAuth}>
         <main className='main'>
           <div className='input'>
             <AddPostForm />
           </div>
-          <div className='output'>
+          <Box
+            p='20px'
+            bg='gray.50'
+            color='gray.50'
+            border='8px'
+            display='flex'
+            alignItems="center"
+            justifyContent="center"
+            bgGradient="linear(to-l, #7928CA, #FF0080)"
+            bgClip="text"
+            fontSize="3xl"
+            fontWeight="extrabold"
+
+          >
             {posts.map((post, index) => <PostHolder post={post} key={index} />)}
-          </div>
+          </Box>
         </main>
       </When>
       <When condition={!isAuth}>

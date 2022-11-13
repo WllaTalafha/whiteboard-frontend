@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-import '../styles/Register.css';
+import React, { useContext, useEffect } from 'react';
 import SigninForm from './SigninForm';
 import SignUpForm from './SignUpForm';
 import RegisterHero from './RegisterHero';
@@ -25,19 +24,13 @@ function Register() {
         <Navigate to='/' />
       </When>
       <When condition={!isAuth}>
-        <div className='register'>
-          <div className='registerCard'>
-            <RegisterHero />
-            <div className='registerForm'>
-              <When condition={authStates.showSignIn}>
-                <SigninForm />
-              </When>
-              <When condition={!authStates.showSignIn}>
-                <SignUpForm />
-              </When>
-            </div>
-          </div>
-        </div >
+        <RegisterHero />
+        <When condition={authStates.showSignIn}>
+          <SigninForm />
+        </When>
+        <When condition={!authStates.showSignIn}>
+          <SignUpForm />
+        </When>
       </When>
     </>
 

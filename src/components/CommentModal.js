@@ -3,7 +3,6 @@ import Modal from 'react-bootstrap/Modal';
 import { dataContext } from '../contexts/DataProvider';
 import cookies from 'react-cookies';
 import axios from 'axios';
-import '../styles/CommentModal.css'
 
 function CommentModal(props) {
 
